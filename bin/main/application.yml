@@ -1,0 +1,9 @@
+spring: 
+  datasource: 
+    url: jdbc:mysql://localhost:3306/Project
+    username: root 
+    password: 1234 
+    driver-Class-Name: com.mysql.cj.jdbc.Driver
+  session:
+      jdbc:
+        initialize-schema: always
