@@ -10,8 +10,8 @@ public class User implements UserDetails{
 
 	private static final long SerialVersionUID=1L;
 	
-	private String u_id;
-	private String u_passwd;
+	private String username;
+	private String password;
 	private String u_name;
 	private String u_date;
 	
@@ -24,21 +24,16 @@ public class User implements UserDetails{
 	private boolean isCredentialsNonExpired;
 	private boolean isEnabled;
 	
-	public String getU_id() {
-		return u_id;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
-	public void setU_id(String u_id) {
-		this.u_id = u_id;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
-	public String getU_passwd() {
-		return u_passwd;
-	}
+	
 
-	public void setU_passwd(String u_passwd) {
-		this.u_passwd = u_passwd;
-	}
 
 	public String getU_name() {
 		return u_name;
@@ -85,13 +80,13 @@ public class User implements UserDetails{
 	@Override
 	public String getPassword() {
 		// TODO Auto-generated method stub
-		return u_passwd;
+		return password;
 	}
 
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return u_name;
+		return username;
 	}
 
 	@Override
@@ -117,5 +112,16 @@ public class User implements UserDetails{
 		// TODO Auto-generated method stub
 		return isEnabled;
 	}
+
+	@Override
+	public String toString() {
+		return "User [username=" + username + ", password=" + password + ", u_name=" + u_name + ", u_date=" + u_date
+				+ ", authorities=" + authorities + ", isAccountNonExpired=" + isAccountNonExpired
+				+ ", isAccountNonLocked=" + isAccountNonLocked + ", isCredentialsNonExpired=" + isCredentialsNonExpired
+				+ ", isEnabled=" + isEnabled + "]";
+	}
+	
+	
+	
 
 }

@@ -19,26 +19,26 @@ public class UserServiceMpl implements UserService {
 	UserMapper userMapper;
 
 	@Override
-	public UserDetails loadUserByUsername(String u_id) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		// TODO Auto-generated method stub
-		User user = userMapper.readUser(u_id);
-		user.setAuthorities(getAuthorities(u_id));
+		User user = userMapper.readUser(username);
+		user.setAuthorities(getAuthorities(username));
 
 		return user;
 	}
 
 	@Override
-	public Collection<GrantedAuthority> getAuthorities(String u_id) {
+	public Collection<GrantedAuthority> getAuthorities(String username) {
 		// TODO Auto-generated method stub
-		List<GrantedAuthority> authorities = userMapper.readAuthorities(u_id);
+		List<GrantedAuthority> authorities = userMapper.readAuthorities(username);
 
 		return authorities;
 	}
 
 	@Override
-	public User readUser(String u_id) {
+	public User readUser(String username) {
 		// TODO Auto-generated method stub
-		return userMapper.readUser(u_id);
+		return userMapper.readUser(username);
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class UserServiceMpl implements UserService {
 	@Override
 	public void createAuthorities(User user) {
 		// TODO Auto-generated method stub
-		userMapper.createUser(user);
+		userMapper.createAuthority(user);
 	}
 
 }

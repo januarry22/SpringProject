@@ -11,10 +11,10 @@ import com.project.example.domain.User;
 public interface UserMapper {
 
 	// 권한 일기
-	public List<GrantedAuthority> readAuthorities(String u_id);
+	public List<GrantedAuthority> readAuthorities(String username);
 
 	// 유저 정보
-	public User readUser(String u_id);
+	public User readUser(String username);
 
 	// 유저 생성
 	public void createUser(User user);

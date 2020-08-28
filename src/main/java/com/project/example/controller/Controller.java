@@ -3,6 +3,7 @@ package com.project.example.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.ui.Model;
@@ -34,13 +35,13 @@ public class Controller {
 		return "/signup";
 	}
 	
-	@RequestMapping("/signUp")
+	@RequestMapping("/signup")
 	public String signUp(User user){
 		//비밀번호 암호화
 		String encodedPassword = new BCryptPasswordEncoder().encode(user.getPassword());
 		
 		//유저 데이터 세팅
-		user.setU_passwd(encodedPassword);
+		user.setPassword(encodedPassword);;
 		user.setAccountNonExpired(true);
 		user.setEnabled(true);
 		user.setAccountNonLocked(true);
@@ -55,9 +56,27 @@ public class Controller {
 		return "/login";
 	}
 	
+	
 	@RequestMapping(value="/login")
 	public String beforeLogin(Model model) {
 		return "/login";
+	}
+
+	@Secured({"ROLE_ADMIN"})
+	@RequestMapping(value="/admin")
+	public String admin(Model model) {
+		return "/admin";
+	}
+	
+	@Secured({"ROLE_USER"})
+	@RequestMapping(value="/user/info")
+	public String userInfo(Model model) {
+		return "/user_info";
+	}
+	
+	@RequestMapping(value="/denied")
+	public String denied(Model model) {
+		return "/denied";
 	}
 
 

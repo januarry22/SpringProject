@@ -13,12 +13,12 @@ public interface UserService extends UserDetailsService {
 	public void createAuthorities(User user);
 
 	// 유저 정보
-	public User readUser(String u_id);
+	public User readUser(String username);
 
 	// 유저 생성
 	public void createUser(User user);
 
 	// 권한 읽기
-	Collection<GrantedAuthority> getAuthorities(String u_id);
+	Collection<GrantedAuthority> getAuthorities(String username);
 
 }
