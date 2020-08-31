@@ -54,4 +54,18 @@ public class UserServiceMpl implements UserService {
 		userMapper.createAuthority(user);
 	}
 
+	@Override
+	public void userUpdate(User user) {
+		// TODO Auto-generated method stub
+		userMapper.userUpdate(user);
+		
+	}
+
+	@Override
+	public void userDelete(String username) {
+		// TODO Auto-generated method stub
+		userMapper.userDelete(username);
+		
+	}
+
 }

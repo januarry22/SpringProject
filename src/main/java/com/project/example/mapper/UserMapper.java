@@ -10,7 +10,7 @@ import com.project.example.domain.User;
 @Mapper
 public interface UserMapper {
 
-	// 권한 일기
+	// 권한 읽기
 	public List<GrantedAuthority> readAuthorities(String username);
 
 	// 유저 정보
@@ -21,4 +21,10 @@ public interface UserMapper {
 
 	// 권한 생성
 	public void createAuthority(User user);
+	
+	// 정보 수정
+	public void userUpdate(User user);
+	
+	// 회원 삭제
+	public void userDelete(String username);
 }

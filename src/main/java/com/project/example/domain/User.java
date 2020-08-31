@@ -24,6 +24,43 @@ public class User implements UserDetails{
 	private boolean isCredentialsNonExpired;
 	private boolean isEnabled;
 	
+	private String u_gender;
+	private String u_birth;
+	private String u_tel;
+	private String u_addr;
+	
+	public String getU_gender() {
+		return u_gender;
+	}
+
+	public void setU_gender(String u_gender) {
+		this.u_gender = u_gender;
+	}
+
+	public String getU_birth() {
+		return u_birth;
+	}
+
+	public void setU_birth(String u_birth) {
+		this.u_birth = u_birth;
+	}
+
+	public String getU_tel() {
+		return u_tel;
+	}
+
+	public void setU_tel(String u_tel) {
+		this.u_tel = u_tel;
+	}
+
+	public String getU_addr() {
+		return u_addr;
+	}
+
+	public void setU_addr(String u_addr) {
+		this.u_addr = u_addr;
+	}
+
 	public void setUsername(String username) {
 		this.username = username;
 	}

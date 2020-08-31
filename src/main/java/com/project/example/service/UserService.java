@@ -20,5 +20,9 @@ public interface UserService extends UserDetailsService {
 
 	// 권한 읽기
 	Collection<GrantedAuthority> getAuthorities(String username);
+	
+	// 유저 수정
+	public void userUpdate(User user);
 
+	public void userDelete(String username);
 }

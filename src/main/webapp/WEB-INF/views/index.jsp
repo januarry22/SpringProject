@@ -20,7 +20,7 @@
 		<sec:authorize access="isAuthenticated()">
 			<a href="/logout">로그아웃</a>
 			<sec:authentication property="principal" var="principal"/>
-			<h2>${principal}</h2>
+			<h2>[${principal.username}]님</h2>
 
 		</sec:authorize>
 	</div>
