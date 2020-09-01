@@ -26,6 +26,7 @@
 	</div>
 	<div>
 		<sec:authorize access="isAuthenticated()">
+			<a href="/boardList">게시판</a>
 			<a href="/user/info">내정보</a>
 			<a href="/admin">관리자</a>
 		</sec:authorize>

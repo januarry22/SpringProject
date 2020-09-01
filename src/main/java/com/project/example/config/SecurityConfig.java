@@ -76,8 +76,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.sessionCreationPolicy(SessionCreationPolicy.NEVER)
 			.invalidSessionUrl("/login")
 			.and()
-		// csrf
-		.csrf();
+		.csrf().disable();
 		
 		
 	}

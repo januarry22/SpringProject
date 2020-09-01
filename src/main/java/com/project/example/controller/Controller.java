@@ -2,6 +2,8 @@ package com.project.example.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,12 +28,12 @@ public class Controller {
 	
 	@RequestMapping("/")
 	public String home(Model model) {
-		List<Board> list = boardservice.selectBoardList();
-		model.addAttribute("list",list);
+//		List<Board> list = boardservice.selectBoardList();
+//		model.addAttribute("list",list);
 		// view에서 사용 list에 메소드에서 가져온 list 삽입
-		logger.debug("debug");
-		logger.info("info");
-		logger.error("error");
+//		logger.debug("debug");
+//		logger.info("info");
+//		logger.error("error");
 		
 		return "/index";
 		
@@ -78,6 +80,7 @@ public class Controller {
 	@Secured({"ROLE_USER"})
 	@RequestMapping(value="/user/info")
 	public String userInfo(Model model) {
+		
 		return "/user_info";
 	}
 	
@@ -113,7 +116,7 @@ public class Controller {
 		return "/user_info";
 	}
 	
-	@Secured({"ROLE_USER"})
+
 	@RequestMapping(value="/user/delete")
 	public String beforeuserDelete(User user) {
 		
@@ -126,6 +129,42 @@ public class Controller {
 		userService.userDelete(username);
 		return "/login";
 	}
+	
+
+	@RequestMapping(value="/board_Write")
+	public String beforeboardWrite(Model model, HttpSession session) {
+//		String user= userInfo(model);
+//
+//		model.addAttribute("user",user);
+//		session.setAttribute("user", user);
+		
+		return "/boardWrite";
+	}
+	
+
+	@RequestMapping(value="/boardWrite")
+	public String boardWrite(Board board) {
+
+	//	board.setB_writer(username);
+		
+		boardservice.boardWrite(board);
+		
+		return "/boardList";
+	}
+	
+
+
+
+	@RequestMapping(value="/boardList")
+	public String boardList(Model model) {
+		
+		List<Board> list = boardservice.selectBoardList();
+		model.addAttribute("list",list);
+		
+		return "/boardList";
+	}
+	
+	
 
 
 }

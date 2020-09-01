@@ -6,5 +6,23 @@
 		FROM board
 	
 	</select>
+	
+	
+	<!--board 입력 -->
+	
+	<insert id="boardWrite" parameterType="Board">
+		INSERT INTO board 
+			(
+			b_title,
+			b_content,
+			b_writer
+		)VALUES(
+			#{b_title},
+			#{b_content},
+			#{b_writer}
+		)
+	
+	</insert>
+	
 </mapper>
 <!-- DB에서 쿼리문 -->

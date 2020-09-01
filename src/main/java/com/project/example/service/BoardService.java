@@ -9,4 +9,7 @@ public interface BoardService {
 	public List<Board> selectBoardList();
 	
 	// BoardServiceMpl 에서 return한 값
+	
+	
+	public void boardWrite(Board board);
 }

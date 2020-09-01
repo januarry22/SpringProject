@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<form action="post" action="user_delete">
+	<form method="post" action="/user_delete">
 	<!-- csrf --><input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
 			<sec:authorize access="isAuthenticated()">

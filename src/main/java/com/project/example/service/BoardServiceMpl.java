@@ -21,5 +21,13 @@ public class BoardServiceMpl implements BoardService{
 		// BoardService.java로 return함
 	}
 	
+	@Override
+	public void boardWrite(Board board) {
+		// TODO Auto-generated method stub
+		boardmapper.boardWrite(board);
+	}
+	
+
+	
 
 }

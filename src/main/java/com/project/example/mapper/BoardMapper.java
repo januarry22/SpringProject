@@ -11,4 +11,6 @@ public interface BoardMapper {
 
 	public List<Board> selectBoardList();
 	// DB에서 가져옴
+
+	public void boardWrite(Board board);
 }
