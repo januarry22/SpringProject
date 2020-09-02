@@ -1,6 +1,6 @@
 package com.project.example.domain;
 
-public class Board {
+public class Board extends Common {
 
 	private int b_id;
 	private String b_title;

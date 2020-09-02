@@ -8,13 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>data: ${sessionScope.sdata}</h1>
 <div id="wrap">
     <br>
     <div id="topForm">
-  			<a href="/board_Write">글쓰기</a>
-         	<a href="/">Home</a>
-           
+    		<input type="button" value="글쓰기" onclick="javascript:window.location='/board_Write'">
+    		<input type="button" value="Home" onclick="javascript:window.location='/'">
+
     </div>
     <!-- 게시글 목록 부분 -->
     <br>
@@ -31,7 +30,8 @@
        			 <tr>
                 <td>${board.b_id}</td>
                 <td align="left">
-			      ${board.b_title}
+			     	<a href="/boardDetail?b_id=${board.b_id}">
+                 ${board.b_title}</a>
                 </td>
                 <td>
                     ${board.b_writer}
