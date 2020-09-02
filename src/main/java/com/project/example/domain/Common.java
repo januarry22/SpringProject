@@ -3,14 +3,14 @@ package com.project.example.domain;
 public class Common extends PagingCriteria{
 
 	/** 페이징 정보 */
-	private PaginationInfo paginationInfo;
+	private PaginationInfo pagenationInfo;
 
-	public PaginationInfo getPaginationInfo() {
-		return paginationInfo;
+	public PaginationInfo getPagenationInfo() {
+		return pagenationInfo;
 	}
 
-	public void setPaginationInfo(PaginationInfo paginationInfo) {
-		this.paginationInfo = paginationInfo;
+	public void setPagenationInfo(PaginationInfo pagenationInfo) {
+		this.pagenationInfo = pagenationInfo;
 	}
 
 

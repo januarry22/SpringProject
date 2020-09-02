@@ -3,7 +3,7 @@ package com.project.example.domain;
 public class PagingCriteria {
 	
 	private int currentPageNo;	// 현재 페이지 번호
-	private int recordsPerpage;	// 페이지 마다 출력할 데이터의 개수
+	private int recordsPerPage;	// 페이지 마다 출력할 데이터의 개수
 	private int pageSize; 	//화면 하단에 출력할 페이지의 크기
 	private String searchkeyword;	// 검색
 	private String searchType;		// 검색 키워드
@@ -15,10 +15,10 @@ public class PagingCriteria {
 		this.currentPageNo = currentPageNo;
 	}
 	public int getRecordsPerpage() {
-		return recordsPerpage;
+		return recordsPerPage;
 	}
-	public void setRecordsPerpage(int recordsPerpage) {
-		this.recordsPerpage = recordsPerpage;
+	public void setRecordsPerpage(int recordsPerPage) {
+		this.recordsPerPage = recordsPerPage;
 	}
 	public int getPageSize() {
 		return pageSize;
@@ -41,12 +41,12 @@ public class PagingCriteria {
 	public PagingCriteria() {
 		
 		this.currentPageNo = 1;
-		this.recordsPerpage = 10;
+		this.recordsPerPage = 10;
 		this.pageSize = 10;
 	}
 	
 	public int getStartPage() {
-		return (currentPageNo-1)*recordsPerpage;
+		return (currentPageNo-1)*recordsPerPage;
 	}
 	
 

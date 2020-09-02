@@ -142,7 +142,7 @@ public class Controller {
 	}
 
 	@GetMapping(value = "/boardList")
-	public String boardList(@ModelAttribute("criteria") Board board, Model model) {
+	public String boardList(@ModelAttribute("board") Board board, Model model) {
 
 		List<Board> boardList = boardservice.selectBoardList(board);
 		

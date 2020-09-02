@@ -27,7 +27,7 @@ public class BoardServiceMpl implements BoardService{
 		PaginationInfo info= new PaginationInfo(board);
 		info.setTotalRecordCount(boardTotalCount);
 		
-		board.setPaginationInfo(info);
+		board.setPagenationInfo(info);
 		
 		if(boardTotalCount>0) {
 			boardList=boardmapper.selectBoardList(board);
