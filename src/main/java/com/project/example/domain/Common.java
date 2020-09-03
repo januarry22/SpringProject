@@ -13,6 +13,7 @@ public class Common extends PagingCriteria{
 		this.pagenationInfo = pagenationInfo;
 	}
 
+	
 
 
 }

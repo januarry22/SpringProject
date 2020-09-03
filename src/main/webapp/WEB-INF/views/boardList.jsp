@@ -30,7 +30,7 @@
        			 <tr>
                 <td>${board.b_id}</td>
                 <td align="left">
-			     	<a href="/boardDetail?b_id=${board.b_id}">
+			     	<a href="/boardDetail?b_id=${board.b_id}&currentPageNo=${currentPageNo}">
                  ${board.b_title}</a>
                 </td>
                 <td>
@@ -43,8 +43,17 @@
         	</table>
    		</div>
     
-    <!-- 페이지 넘버 부분-->
- 
+	<!-- 페이징 부분 -->
+	<br>
+	<div id="paging">
+		<br>
+		<c:forEach var="board" begin="${firstPage}" end="${lastPage}">
+		<a href="/boardList?page=?${currentPageNo}">${currentPageNo}</a>
+		
+		</c:forEach>
+	
+	
+	</div>
      
     <!--  검색 부분 -->
     <br>
