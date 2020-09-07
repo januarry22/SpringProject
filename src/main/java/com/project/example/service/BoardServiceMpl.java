@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.jasper.tagplugins.jstl.core.Out;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,22 +19,38 @@ public class BoardServiceMpl implements BoardService{
 	@Autowired BoardMapper boardmapper;
 	// mapper로 가져온 파일 boardmapper 주입
 	@Override
-	public List<Board> selectBoardList(Board board) {
+	public List<Board> getBoardList(Board board) {
 		// TODO Auto-generated method stub
-		List<Board> boardList=Collections.emptyList();
+//		List<Board> boardList=Collections.emptyList();
+//		
+//		int boardTotalCount=boardmapper.selectBoardTotalCount(board);
+//
+//		PaginationInfo paginationInfo= new PaginationInfo(board);
+//		paginationInfo.setTotalRecordCount(boardTotalCount);
+//		
+//		board.setPaginationInfo(paginationInfo);
+//		
+//		if(boardTotalCount>0) {
+//			boardList=boardmapper.selectBoardList(board);
+//		}
+//		return boardList;
 		
-		int boardTotalCount=boardmapper.selectBoardTotalCount(board);
-
-		PaginationInfo info= new PaginationInfo(board);
-		info.setTotalRecordCount(boardTotalCount);
+		int total=selectBoardTotalCount(board);
+		PagingCriteria criteria = new PagingCriteria();
+		criteria.setMaxPage(total);
 		
-		board.setPagenationInfo(info);
 		
-		if(boardTotalCount>0) {
-			boardList=boardmapper.selectBoardList(board);
-		}
-		return boardList;
+		return boardmapper.selectBoardList(board);
 		// BoardService.java로 return함
+	}
+	
+	@Override
+	public int selectBoardTotalCount(Board board) {
+		
+		boardmapper.selectBoardList(board);
+		
+		return (selectBoardTotalCount(board))/5+1;
+	
 	}
 	
 	@Override

@@ -3,6 +3,8 @@ package com.project.example.domain;
 public class PaginationInfo {
 
 	private PagingCriteria criteria;
+	
+	
 	/** 전체 데이터 개수 */
 	private int totalRecordCount;
 
@@ -38,13 +40,6 @@ public class PaginationInfo {
 
 	public int getTotalRecordCount() {
 		return totalRecordCount;
-	}
-
-	public void setTotalRecordCount(int totalRecordCount) {
-		this.totalRecordCount = totalRecordCount;
-		if(totalRecordCount>0) {
-			calculation();
-		}
 	}
 
 
@@ -109,33 +104,42 @@ public class PaginationInfo {
 		if(criteria.getCurrentPageNo()<1) {
 			criteria.setCurrentPageNo(totalPageCount);
 		}
-		if(criteria.getRecordsPerpage()<1|| criteria.getRecordsPerpage()>100) {
-			criteria.setRecordsPerpage(10);
+		if(criteria.getRecordsPerPage()<1|| criteria.getRecordsPerPage()>100) {
+			criteria.setRecordsPerPage(10);
 		}
 		if(criteria.getPageSize()<5||criteria.getPageSize()>20) {
 			criteria.setPageSize(10);
 		}
 		this.criteria=criteria;
 	}
-	
+	public void setTotalRecordCount(int totalRecordCount) {
+		this.totalRecordCount = totalRecordCount;
+		if(totalRecordCount>0) {
+			calculation();
+		}
+	}
+
+
 	private void calculation() {
 		// TODO Auto-generated method stub
-		totalPageCount=((totalPageCount-1)/criteria.getRecordsPerpage())+1;
+		totalPageCount=((totalPageCount-1)/criteria.getRecordsPerPage())+1;
 		if(criteria.getCurrentPageNo()>totalPageCount) {
 			criteria.setCurrentPageNo(totalPageCount);
 		}
 		
 		firstPage=((criteria.getCurrentPageNo()-1)/criteria.getPageSize())*criteria.getPageSize()+1;
 		
+		
 		lastPage=firstPage+criteria.getPageSize()-1;
+		
 		if(lastPage>totalPageCount) {
 			lastPage=totalPageCount;
 		}
 		
-		firstRecordIndex=(criteria.getCurrentPageNo()-1)*criteria.getRecordsPerpage();
-		
+		firstRecordIndex=(criteria.getCurrentPageNo()-1)*criteria.getRecordsPerPage();
+
 		hasPreviousPage=firstPage!=1;
-		hasNextPage=(lastPage*criteria.getRecordsPerpage())<totalRecordCount;
+		hasNextPage=(lastPage*criteria.getRecordsPerPage())<totalRecordCount;
 	}
 
 

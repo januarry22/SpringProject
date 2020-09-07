@@ -26,11 +26,11 @@
                 <td>작성일</td>
                 <td>조회수</td>
             </tr>    
-			<c:forEach var="board" items="${list}">
+			<c:forEach var="board" items="${board}">
        			 <tr>
                 <td>${board.b_id}</td>
                 <td align="left">
-			     	<a href="/boardDetail?b_id=${board.b_id}&currentPageNo=${currentPageNo}">
+			     	<a href="/boardDetail?b_id=${board.b_id}">
                  ${board.b_title}</a>
                 </td>
                 <td>
@@ -42,19 +42,29 @@
            	 </c:forEach>
         	</table>
    		</div>
-    
-	<!-- 페이징 부분 -->
-	<br>
-	<div id="paging">
-		<br>
-		<c:forEach var="board" begin="${firstPage}" end="${lastPage}">
-		<a href="/boardList?page=?${currentPageNo}">${currentPageNo}</a>
+    <!-- 페이징 -->
+		<div>
+			<c:if test="${currentPageNo}>3">
+				<a href="/boardList?page=${currentPageNo-3}">[이전]</a>
+			</c:if>
+			<c:if test="${currentPageNo}>2">
+				<a href="/boardList?page=${currentPageNo-3}">[${currentPageNo-2}]</a>
+			</c:if>
+			<c:if test="${currentPageNo}>1">
+				<a href="/boardList?page=${currentPageNo-3}">[${currentPageNo-1}]</a>
+			</c:if>
+			<c:if test="${currentPageNo < totalPageNo}">
+				<a href="/boardList?page=${currentPageNo-3}">[${currentPageNo+1}]</a>
+			</c:if>
+			<c:if test="${currentPageNo+1 < totalPageNo}>3">
+				<a href="/boardList?page=${currentPageNo-3}">[${currentPageNo+2}]</a>
+			</c:if>
+			<c:if test="${currentPageNo +2< totalPageNo}>3">
+				<a href="/boardList?page=${currentPageNo-3}">[다음]</a>
+			</c:if>
 		
-		</c:forEach>
-	
-	
-	</div>
-     
+		</div>
+		
     <!--  검색 부분 -->
     <br>
     <div id="searchForm">

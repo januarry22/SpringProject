@@ -3,16 +3,16 @@
 <mapper namespace="com.project.example.mapper.BoardMapper">
 	
 	<select id="selectBoardList" parameterType="Board" resultType="Board">
-	SELECT 
+ 	SELECT 
 		row_number() over() AS rnum, b_id, b_title, b_content, b_writer
 	FROM 
 		board 
 	ORDER BY b_id ASC 
 	LIMIT 
-		#{pagenationInfo.firstRecordIndex}, #{recordsPerPage}
+		#{startPage}, #{endPage}
 	</select>
 	
-	<select id="selectBoardTotalCount" parameterType="PagingCriteria" resultType="int">
+	<select id="selectBoardTotalCount" parameterType="Board" resultType="int">
 		SELECT 
 			COUNT(*)
 		FROM

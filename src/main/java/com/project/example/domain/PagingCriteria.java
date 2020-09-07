@@ -2,24 +2,54 @@ package com.project.example.domain;
 
 public class PagingCriteria {
 	
+	
+	private int maxPage;
+	private int startPage;
+	private int endPage;
+	
+
 	private int currentPageNo;	// 현재 페이지 번호
+	
+	
 	private int recordsPerPage;	// 페이지 마다 출력할 데이터의 개수
 	private int pageSize; 	//화면 하단에 출력할 페이지의 크기
 	private String searchkeyword;	// 검색
 	private String searchType;		// 검색 키워드
 	
+	
+	
+	public int getStartPage() {
+		return startPage;
+	}
+	public void setStartPage(int startPage) {
+		this.startPage = startPage;
+	}
+	public int getEndPage() {
+		return endPage;
+	}
+	public void setEndPage(int endPage) {
+		this.endPage = endPage;
+	}
+	public int getMaxPage() {
+		return maxPage;
+	}
+	public void setMaxPage(int maxPage) {
+		this.maxPage = maxPage;
+	}
+
+	public int getRecordsPerPage() {
+		return recordsPerPage;
+	}
+	public void setRecordsPerPage(int recordsPerPage) {
+		this.recordsPerPage = recordsPerPage;
+	}
 	public int getCurrentPageNo() {
 		return currentPageNo;
 	}
 	public void setCurrentPageNo(int currentPageNo) {
 		this.currentPageNo = currentPageNo;
 	}
-	public int getRecordsPerpage() {
-		return recordsPerPage;
-	}
-	public void setRecordsPerpage(int recordsPerPage) {
-		this.recordsPerPage = recordsPerPage;
-	}
+
 	public int getPageSize() {
 		return pageSize;
 	}
@@ -41,13 +71,14 @@ public class PagingCriteria {
 	public PagingCriteria() {
 		
 		this.currentPageNo = 1;
-		this.recordsPerPage = 10;
-		this.pageSize = 10;
+
+//		this.recordsPerPage = 10;
+//		this.pageSize = 10;
 	}
 	
-	public int getStartPage() {
-		return (currentPageNo-1)*recordsPerPage;
-	}
+//	public int getStartPage() {
+//		return (currentPageNo-1)*recordsPerPage;
+//	}
 	
 
 }

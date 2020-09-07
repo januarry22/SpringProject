@@ -144,10 +144,9 @@ public class Controller {
 	@GetMapping(value = "/boardList")
 	public String boardList(@ModelAttribute("board") Board board, Model model) {
 
-		List<Board> boardList = boardservice.selectBoardList(board);
+		List<Board> boardList = boardservice.getBoardList(board);
+		model.addAttribute("board", boardList);
 		
-		
-		model.addAttribute("list", boardList);
 
 		return "/boardList";
 	}
