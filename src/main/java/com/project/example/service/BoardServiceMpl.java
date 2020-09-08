@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.example.domain.Board;
+import com.project.example.domain.Pagination;
 import com.project.example.domain.PaginationInfo;
 import com.project.example.domain.PagingCriteria;
 import com.project.example.mapper.BoardMapper;
@@ -19,7 +20,7 @@ public class BoardServiceMpl implements BoardService{
 	@Autowired BoardMapper boardmapper;
 	// mapper로 가져온 파일 boardmapper 주입
 	@Override
-	public List<Board> getBoardList(Board board) {
+	public List<Board> getBoardList(Pagination page) {
 		// TODO Auto-generated method stub
 //		List<Board> boardList=Collections.emptyList();
 //		
@@ -35,22 +36,19 @@ public class BoardServiceMpl implements BoardService{
 //		}
 //		return boardList;
 		
-		int total=selectBoardTotalCount(board);
-		PagingCriteria criteria = new PagingCriteria();
-		criteria.setMaxPage(total);
+//		int total=selectBoardTotalCount(board);
+//		PagingCriteria criteria = new PagingCriteria();
+//		criteria.setMaxPage(total);
 		
 		
-		return boardmapper.selectBoardList(board);
+		return boardmapper.selectBoardList(page);
 		// BoardService.java로 return함
 	}
 	
 	@Override
-	public int selectBoardTotalCount(Board board) {
-		
-		boardmapper.selectBoardList(board);
-		
-		return (selectBoardTotalCount(board))/5+1;
+	public int selectBoardTotalCount() {
 	
+		return boardmapper.selectBoardTotalCount();
 	}
 	
 	@Override
@@ -83,7 +81,7 @@ public class BoardServiceMpl implements BoardService{
 		boardmapper.boardUpdate(board);
 		
 	}
-	
+
 
 
 

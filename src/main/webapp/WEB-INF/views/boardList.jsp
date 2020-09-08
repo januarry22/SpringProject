@@ -1,11 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>  
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%> 
+         <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	function selChange() {
+		var sel = document.getElementById('cntPerPage').value;
+		location.href="boardList?nowPage=${paging.nowPage}&cntPerPage="+sel;
+	}
+</script>
 </head>
 <body>
 <div id="wrap">
@@ -15,6 +22,7 @@
     		<input type="button" value="Home" onclick="javascript:window.location='/'">
 
     </div>
+    
     <!-- 게시글 목록 부분 -->
     <br>
     <div id="board">
@@ -44,25 +52,22 @@
    		</div>
     <!-- 페이징 -->
 		<div>
-			<c:if test="${currentPageNo}>3">
-				<a href="/boardList?page=${currentPageNo-3}">[이전]</a>
-			</c:if>
-			<c:if test="${currentPageNo}>2">
-				<a href="/boardList?page=${currentPageNo-3}">[${currentPageNo-2}]</a>
-			</c:if>
-			<c:if test="${currentPageNo}>1">
-				<a href="/boardList?page=${currentPageNo-3}">[${currentPageNo-1}]</a>
-			</c:if>
-			<c:if test="${currentPageNo < totalPageNo}">
-				<a href="/boardList?page=${currentPageNo-3}">[${currentPageNo+1}]</a>
-			</c:if>
-			<c:if test="${currentPageNo+1 < totalPageNo}>3">
-				<a href="/boardList?page=${currentPageNo-3}">[${currentPageNo+2}]</a>
-			</c:if>
-			<c:if test="${currentPageNo +2< totalPageNo}>3">
-				<a href="/boardList?page=${currentPageNo-3}">[다음]</a>
-			</c:if>
-		
+		<c:if test="${paging.startPage != 1 }">
+			<a href="/boardList?nowPage=${paging.startPage - 1 }">[이전]</a>
+		</c:if>
+		<c:forEach begin="${paging.startPage}" end="${paging.endPage}" var="p">
+			<c:choose>
+				<c:when test="${p == paging.nowPage }">
+					${p}&nbsp;
+				</c:when>
+				<c:when test="${p != paging.nowPage }">
+					<a href="/boardList?nowPage=${p}">${p}</a>
+				</c:when>
+			</c:choose>
+		</c:forEach>
+		<c:if test="${paging.endPage != paging.lastPage}">
+			<a href="/boardList?nowPage=${paging.endPage+1}">[다음]</a>
+		</c:if>
 		</div>
 		
     <!--  검색 부분 -->

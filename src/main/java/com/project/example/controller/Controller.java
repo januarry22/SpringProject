@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.example.domain.Board;
+import com.project.example.domain.Pagination;
 import com.project.example.domain.PagingCriteria;
 import com.project.example.domain.User;
 import com.project.example.service.BoardService;
@@ -141,11 +142,30 @@ public class Controller {
 		return "/boardList";
 	}
 
-	@GetMapping(value = "/boardList")
-	public String boardList(@ModelAttribute("board") Board board, Model model) {
+	@GetMapping("boardList")
+	//@ModelAttribute("board") Board board,
+	public String boardList( Model model, Pagination page
+			, @RequestParam(value="nowPage", required = false)String nowPage) {
+		
+		int total=boardservice.selectBoardTotalCount();
+		
+//		if(nowPage==null&& cntPerPage==null) {
+//			nowPage="1";
+//			cntPerPage="5";
+//		}else 
+		if(nowPage==null) {
+			nowPage="1";
+		}
+//		else if(cntPerPage==null) {
+//			cntPerPage="5";
+//		}
+		
+		page=new Pagination(total, Integer.parseInt(nowPage));
+		model.addAttribute("paging",page);
+	
 
-		List<Board> boardList = boardservice.getBoardList(board);
-		model.addAttribute("board", boardList);
+	//	List<Board> boardList = boardservice.getBoardList(board);
+		model.addAttribute("board", boardservice.getBoardList(page));
 		
 
 		return "/boardList";

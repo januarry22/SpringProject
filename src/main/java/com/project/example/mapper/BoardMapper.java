@@ -5,15 +5,17 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.project.example.domain.Board;
+import com.project.example.domain.Pagination;
 import com.project.example.domain.PagingCriteria;
 
 @Mapper
 public interface BoardMapper {
 
-	public List<Board> selectBoardList(Board board);
+	public List<Board> selectBoardList(Pagination page);
 	// DB에서 가져옴
 	
-	public int selectBoardTotalCount(Board board);
+	public int selectBoardTotalCount();
+	
 
 	public void boardWrite(Board board);
 	
