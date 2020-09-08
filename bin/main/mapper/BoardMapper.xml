@@ -3,7 +3,7 @@
 <mapper namespace="com.project.example.mapper.BoardMapper">
 	
 	<select id="selectBoardList" resultType="Board">
-		SELECT row_number() over() AS rnum, b_id, b_title, b_content, b_writer
+		SELECT row_number() over() AS rnum, b_id, b_title, b_content, b_writer, b_hit
 		FROM board 
 		ORDER BY b_id ASC LIMIT #{start}, #{end}
 	</select>
@@ -59,8 +59,16 @@
 			b_content = #{b_content}
 		WHERE
 			b_id = #{b_id}
-		
 	
 	</update>
+	
+	<!-- hit update -->
+	<update id="updateHit" parameterType="String">
+		UPDATE board SET b_hit = b_hit + 1
+		WHERE b_id = #{b_id}
+	
+	</update>
+	
+	
 </mapper>
 <!-- DB에서 쿼리문 -->

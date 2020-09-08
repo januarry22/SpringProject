@@ -7,12 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
-	function selChange() {
-		var sel = document.getElementById('cntPerPage').value;
-		location.href="boardList?nowPage=${paging.nowPage}&cntPerPage="+sel;
-	}
-</script>
+
 </head>
 <body>
 <div id="wrap">
@@ -38,14 +33,14 @@
        			 <tr>
                 <td>${board.b_id}</td>
                 <td align="left">
-			     	<a href="/boardDetail?b_id=${board.b_id}">
+			     	<a href="/boardDetail?b_id=${board.b_id}&nowPage=${paging.nowPage}">
                  ${board.b_title}</a>
                 </td>
                 <td>
                     ${board.b_writer}
                 </td>
                 <td>${board.b_date}</td>
-                <td></td>
+                <td>${board.b_hit}</td>
             </tr>
            	 </c:forEach>
         	</table>

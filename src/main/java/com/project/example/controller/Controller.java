@@ -187,6 +187,7 @@ public class Controller {
 	public String boardDetail(@RequestParam(value = "b_id") String b_id, Model model) {
 
 		Board board = boardservice.boardDetail(b_id);
+		boardservice.updateHit(b_id);
 
 		model.addAttribute("board", board);
 		return "/boardDetail";
@@ -217,5 +218,7 @@ public class Controller {
 		return "/boardList";
 
 	}
+	
+	
 
 }

@@ -27,4 +27,5 @@ public interface BoardMapper {
 	
 	public void boardUpdate(Board board);
 	
+	public boolean updateHit(String b_id);
 }

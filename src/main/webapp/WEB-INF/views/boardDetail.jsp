@@ -47,6 +47,14 @@
             ${board.b_content}
             </td>        
         </tr>
+         <tr>
+            <td>
+                조회수
+            </td>
+            <td>
+            ${board.b_hit}
+            </td>        
+        </tr>
         </table>
         
                 <input type="submit" value="삭제" >  

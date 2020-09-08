@@ -7,7 +7,14 @@ public class Board  {
 	private String b_content;
 	private String b_writer;
 	private String b_date;
+	private int b_hit;
 	
+	public int getB_hit() {
+		return b_hit;
+	}
+	public void setB_hit(int b_hit) {
+		this.b_hit = b_hit;
+	}
 	public int getB_id() {
 		return b_id;
 	}

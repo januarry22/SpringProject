@@ -25,6 +25,7 @@ public interface BoardService {
 	public void boardUpdate(Board board);
 
 	public List<Board> getBoardList(Pagination page);
-
+	
+	public boolean updateHit(String b_id);
 
 }

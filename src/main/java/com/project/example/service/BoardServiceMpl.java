@@ -82,6 +82,13 @@ public class BoardServiceMpl implements BoardService{
 		
 	}
 
+	@Override
+	public boolean updateHit(String b_id) {
+		// TODO Auto-generated method stub
+		
+		return boardmapper.updateHit(b_id);
+	}
+
 
 
 
