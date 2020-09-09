@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.project.example.mapper.BoardMapper">
+
+	<!-- select -->
+	<select id="commentList" resultType="Comment">
+		SELECT * 
+		FROM comment
+		WHERE commentB_id = #{commentB_id}
+	</select>
+
+	<!-- insert -->
+	<insert id="commentInsert" parameterType="Comment">
+		INSERT INTO
+		(	
+			c_id,
+			commentB_id,
+			c_content,
+			c_writer,
+			c_date
+		)VALUES(
+			#{c_id},
+			#{commentB_id},
+			#{c_content},
+			#{c_writer},
+			sysdate()
+		)
+	
+	</insert>
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.project.example.domain.Board;
+import com.project.example.domain.Comment;
 import com.project.example.domain.Pagination;
 import com.project.example.domain.PagingCriteria;
 
@@ -28,4 +29,10 @@ public interface BoardMapper {
 	public void boardUpdate(Board board);
 	
 	public boolean updateHit(String b_id);
+	
+	// comment
+	
+	public Comment commentInsert(Comment comment);
+	
+	public List<Comment> commentList(String commentB_id);
 }

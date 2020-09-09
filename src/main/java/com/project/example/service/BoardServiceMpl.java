@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.project.example.domain.Board;
+import com.project.example.domain.Comment;
 import com.project.example.domain.Pagination;
 import com.project.example.domain.PaginationInfo;
 import com.project.example.domain.PagingCriteria;
@@ -87,6 +88,19 @@ public class BoardServiceMpl implements BoardService{
 		// TODO Auto-generated method stub
 		
 		return boardmapper.updateHit(b_id);
+	}
+
+	@Override
+	public Comment commentInsert(Comment comment) {
+		// TODO Auto-generated method stub
+		
+		return boardmapper.commentInsert(comment);
+	}
+
+	@Override
+	public List<Comment> commentList(String commentB_id) {
+		// TODO Auto-generated method stub
+		return boardmapper.commentList(commentB_id);
 	}
 
 

@@ -62,5 +62,6 @@
                 <input type="button" value="목록" onclick="javascript:window.location='/boardList'">
         </form>
              
+	<%@ include file="../views/comment.jsp" %>
 </body>
 </html>

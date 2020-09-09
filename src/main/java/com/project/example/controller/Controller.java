@@ -1,5 +1,7 @@
 package com.project.example.controller;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -8,6 +10,7 @@ import org.hibernate.Criteria;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -16,8 +19,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mysql.cj.xdevapi.JsonArray;
 import com.project.example.domain.Board;
+import com.project.example.domain.Comment;
 import com.project.example.domain.Pagination;
 import com.project.example.domain.PagingCriteria;
 import com.project.example.domain.User;
@@ -219,6 +225,29 @@ public class Controller {
 
 	}
 	
+	@RequestMapping(value="/commentInsert")
+	@ResponseBody
+	public String ajax_commentInsert(@ModelAttribute("board") Board board, Comment comment, HttpSession session) {
+		
+		String writer=(String)session.getAttribute("b_writer");
+		
+		comment.setC_writer(writer);
+		
+		boardservice.commentInsert(comment);
+		
+		return "success";
+		
+	}
+	
+	@RequestMapping(value="/commentList")
+	@ResponseBody
+	public List<Comment> ajax_commentList(@RequestParam String commentB_id) {
+		
+
+		List<Comment> list=boardservice.commentList(commentB_id);
+		
+		return list;
+	}
 	
 
 }

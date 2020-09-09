@@ -3,6 +3,7 @@ package com.project.example.service;
 import java.util.List;
 
 import com.project.example.domain.Board;
+import com.project.example.domain.Comment;
 import com.project.example.domain.Pagination;
 import com.project.example.domain.PagingCriteria;
 
@@ -27,5 +28,9 @@ public interface BoardService {
 	public List<Board> getBoardList(Pagination page);
 	
 	public boolean updateHit(String b_id);
+	
+	public Comment commentInsert(Comment comment);
+	
+	public List<Comment> commentList(String commentB_id);
 
 }
