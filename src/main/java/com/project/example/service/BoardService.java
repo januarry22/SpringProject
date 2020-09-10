@@ -29,8 +29,14 @@ public interface BoardService {
 	
 	public boolean updateHit(String b_id);
 	
-	public Comment commentInsert(Comment comment);
+	//comment
 	
-	public List<Comment> commentList(String commentB_id);
+	public int commentInsert(Comment comment);
+	
+	public List<Comment> commentList(Integer commentB_id);
+	
+	public int commentUpdate(Comment comment);
+	
+	public int commentDelete(int c_id);
 
 }

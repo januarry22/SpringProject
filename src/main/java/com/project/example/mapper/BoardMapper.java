@@ -32,7 +32,11 @@ public interface BoardMapper {
 	
 	// comment
 	
-	public Comment commentInsert(Comment comment);
+	public int commentInsert(Comment comment);
 	
-	public List<Comment> commentList(String commentB_id);
+	public List<Comment> commentList(Integer commentB_id);
+	
+	public int commentUpdate(Comment comment);
+	
+	public int commentDelete(int c_id);
 }

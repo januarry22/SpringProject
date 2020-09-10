@@ -12,9 +12,9 @@
 		if(val==0){
 				location.href="/boardList";
 		}else if(val==1){
-			location.href="/board/Update?b_id=${board.b_id}";
+			location.href="/board/Update?b_id=${board.b_id}&nowPage=${paging.nowPage}";
 		}
-
+	}
 
 </script>
 </head>
@@ -58,7 +58,7 @@
         </table>
         
                 <input type="submit" value="삭제" >  
-                <input type="button" value="수정" onclick="javascript:window.location='/board/Update?b_id=${board.b_id}'">
+                <input type="button" value="수정" onclick="javascript:window.location='/board/Update?b_id=${board.b_id}&nowPage=${paging.nowPage}'">
                 <input type="button" value="목록" onclick="javascript:window.location='/boardList'">
         </form>
              

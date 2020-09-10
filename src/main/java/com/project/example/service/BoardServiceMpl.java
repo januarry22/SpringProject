@@ -91,16 +91,28 @@ public class BoardServiceMpl implements BoardService{
 	}
 
 	@Override
-	public Comment commentInsert(Comment comment) {
+	public int commentInsert(Comment comment) {
 		// TODO Auto-generated method stub
-		
+
 		return boardmapper.commentInsert(comment);
 	}
 
 	@Override
-	public List<Comment> commentList(String commentB_id) {
+	public List<Comment> commentList(Integer commentB_id) {
 		// TODO Auto-generated method stub
 		return boardmapper.commentList(commentB_id);
+	}
+
+	@Override
+	public int commentUpdate(Comment comment) {
+		// TODO Auto-generated method stub
+		return boardmapper.commentUpdate(comment);
+	}
+
+	@Override
+	public int commentDelete(int c_id) {
+		// TODO Auto-generated method stub
+		return boardmapper.commentDelete(c_id);
 	}
 
 

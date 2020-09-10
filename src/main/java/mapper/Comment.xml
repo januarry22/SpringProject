@@ -11,15 +11,13 @@
 
 	<!-- insert -->
 	<insert id="commentInsert" parameterType="Comment">
-		INSERT INTO
+		INSERT INTO comment
 		(	
-			c_id,
 			commentB_id,
 			c_content,
 			c_writer,
 			c_date
 		)VALUES(
-			#{c_id},
 			#{commentB_id},
 			#{c_content},
 			#{c_writer},
@@ -27,12 +25,23 @@
 		)
 	
 	</insert>
+	
+	
+	<!-- update -->
+	<update id="commentUpdate" parameterType="Comment">
+		UPDATE comment
+		SET	c_content = #{c_content}
+		WHERE c_id = #{c_id}
+		
+	</update>
 
+	<!-- delete -->
 
-
-
-
-
+	<delete id="commentDelete" parameterType="int">
+		DELETE FROM comment
+		WHERE c_id = #{c_id}
+	
+	</delete>
 
 
 

@@ -190,14 +190,12 @@ public class Controller {
 //	}
 
 	@GetMapping(value = "/boardDetail")
-	public String boardDetail(@RequestParam(value = "b_id") String b_id, Model model) {
+	public String boardDetail( Model model, @RequestParam(value = "b_id") String b_id) {
 
-		Board board = boardservice.boardDetail(b_id);
+		model.addAttribute("board", boardservice.boardDetail(b_id));
 		boardservice.updateHit(b_id);
 
-		model.addAttribute("board", board);
 		return "/boardDetail";
-
 	}
 
 	@RequestMapping(value = "/boardUpdate")
@@ -208,7 +206,7 @@ public class Controller {
 	}
 
 	@GetMapping(value = "/board/Update")
-	public String beforeboardUpdate(@RequestParam(value = "b_id") String b_id, Model model) {
+	public String beforeboardUpdate( Model model, @RequestParam(value = "b_id") String b_id) {
 
 		Board board = boardservice.boardDetail(b_id);
 
@@ -225,29 +223,50 @@ public class Controller {
 
 	}
 	
+	
+	// Comment
+	
+	
 	@RequestMapping(value="/commentInsert")
 	@ResponseBody
-	public String ajax_commentInsert(@ModelAttribute("board") Board board, Comment comment, HttpSession session) {
+	public String jspcommentInsert(Comment comment) {
 		
-		String writer=(String)session.getAttribute("b_writer");
-		
-		comment.setC_writer(writer);
+	//	String writer=(String)session.getAttribute("b_writer");
+
 		
 		boardservice.commentInsert(comment);
 		
-		return "success";
+		return "/commentList";
+
 		
 	}
 	
 	@RequestMapping(value="/commentList")
 	@ResponseBody
-	public List<Comment> ajax_commentList(@RequestParam String commentB_id) {
+	public List<Comment> jspcommentList(@ModelAttribute("board")Board board, Model model, 
+			@RequestParam(value = "bno") Integer commentB_id) {
 		
 
-		List<Comment> list=boardservice.commentList(commentB_id);
+		return boardservice.commentList(commentB_id);
+	}
+	
+	@RequestMapping(value="/commentUpdate")
+	@ResponseBody
+	public int jspcommentUpdate(Comment comment) {
 		
-		return list;
+		boardservice.commentUpdate(comment);
+		
+		return boardservice.commentUpdate(comment);
 	}
 	
 
-}
+	@RequestMapping(value="/commentDelete")
+	@ResponseBody
+	public int jspcommentDelete(Integer c_id) {
+			
+
+		boardservice.commentDelete(c_id);
+			return boardservice.commentDelete(c_id);
+	}
+	}
+

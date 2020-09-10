@@ -24,12 +24,14 @@
 			b_title,
 			b_content,
 			b_writer,
-			b_date
+			b_date,
+			b_hit
 		)VALUES(
 			#{b_title},
 			#{b_content},
 			#{b_writer},
-			sysdate()
+			sysdate(),
+			#{b_hit}
 		)
 	
 	</insert>
@@ -56,7 +58,8 @@
 		UPDATE board
 		SET
 			b_title = #{b_title},
-			b_content = #{b_content}
+			b_content = #{b_content},
+			b_hit = #{b_hit}
 		WHERE
 			b_id = #{b_id}
 	
